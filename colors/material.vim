@@ -74,6 +74,23 @@ let s:brown = { 'gui': '#c17e70', 'cterm': 137 }
 let s:pink = { 'gui': '#f07178', 'cterm': 204 }
 let s:violet = { 'gui': '#bb80b3', 'cterm': 139 }
 
+" Extra unused colors
+"   '--moonlight-desaturated-gray': '#7f85a3',
+"   '--moonlight-dark-blue': '#3e68d7',
+"   '--moonlight-light-red': '#ff98a4',
+"   '--moonlight-teal': '#4fd6be',
+"   '--moonlight-indigo': '#7a88cf',
+"   '--moonlight-bright-cyan': '#b4f9f8',
+
+"   '--moonlight-gray-10-alt': '#bcc4d6',
+"   '--moonlight-gray-9': '#b4c2f0',
+"   '--moonlight-gray-8': '#a9b8e8',
+"   '--moonlight-gray-5': '#2f334d',
+"   '--moonlight-gray-4': '#222436',
+"   '--moonlight-gray-3': '#1e2030',
+"   '--moonlight-gray-2': '#191a2a',
+"   '--moonlight-gray-1': '#131421'
+
 " Theme-specific color overrides
 if g:material_theme_style == 'palenight' || g:material_theme_style == 'palenight-community'
   let s:bg = { 'gui': '#292d3e', 'cterm': 'none' }
@@ -102,6 +119,31 @@ elseif g:material_theme_style == 'ocean' || g:material_theme_style == 'ocean-com
   let s:guides = { 'gui': '#3b3f51', 'cterm': 17 }
   let s:line_numbers = { 'gui': '#3b3f51', 'cterm': 60 }
   let s:line_highlight = { 'gui': '#0a0c12', 'cterm': 0 }
+elseif g:material_theme_style == 'moonlight'
+  let s:bg = { 'gui': '#222436', 'cterm': 'none' }
+  let s:fg = { 'gui': '#c8d3f5', 'cterm': 231 }
+  let s:invisibles = { 'gui': '#65738e', 'cterm': 66 }
+  let s:comments = { 'gui': '#7a88cf', 'cterm': 145 }
+  let s:caret = { 'gui': '#ffcc00', 'cterm': 220 }
+  let s:selection = { 'gui': '#2f334d', 'cterm': 239 }
+  let s:guides = { 'gui': '#37474f', 'cterm': 17 }
+  let s:line_numbers = { 'gui': '#444a73', 'cterm': 145 }
+  let s:line_highlight = { 'gui': '#2f334d', 'cterm': 235 }
+  let s:white = { 'gui': '#ffffff', 'cterm': 231 }
+  let s:black = { 'gui': '#000000', 'cterm': 232 }
+  let s:light_red = { 'gui': '#ff98a4', 'cterm': 203 }
+  let s:red = { 'gui': '#ff757f', 'cterm': 203 }
+  let s:dark_red = { 'gui': '#ff5370', 'cterm': 203 }
+  let s:orange = { 'gui': '#ff966c', 'cterm': 209 }
+  let s:yellow = { 'gui': '#ffc777', 'cterm': 11 }
+  let s:green = { 'gui': '#c3e88d', 'cterm': 2 } " 186 –– almost perfect match
+  let s:cyan = { 'gui': '#86e1fc', 'cterm': 117 }
+  let s:blue = { 'gui': '#82aaff', 'cterm': 111 }
+  let s:paleblue = { 'gui': '#65bcff', 'cterm': 152 }
+  let s:purple = { 'gui': '#c099ff', 'cterm': 176 }
+  let s:brown = { 'gui': '#fc7b7b', 'cterm': 137 }
+  let s:pink = { 'gui': '#fca7ea', 'cterm': 204 }
+  let s:violet = { 'gui': '#c099ff', 'cterm': 139 }
 elseif g:material_theme_style == 'lighter' || g:material_theme_style == 'lighter-community'
   set background=light
   let s:bg = { 'gui': '#fafafa', 'cterm': 'none' }
@@ -205,7 +247,7 @@ call s:SetHighlight('Conceal', s:brown, s:bg, '')
 call s:SetHighlight('Constant', s:orange, '', '')
 call s:SetHighlight('String', s:green, '', '')
 call s:SetHighlight('Character', s:green, '', '')
-call s:SetHighlight('Identifier', s:red, '', '')
+call s:SetHighlight('Identifier', s:light_red, '', '')
 call s:SetHighlight('Function', s:blue, '', '')
 call s:SetHighlight('Statement', s:purple, '', '')
 call s:SetHighlight('Operator', s:cyan, '', '')
@@ -381,7 +423,7 @@ call s:SetHighlight('lessFunction', s:blue, '', '')
 call s:SetHighlight('lessVariable', s:purple, '', '')
 
 " HTML
-call s:SetHighlight('htmlTagName', s:pink, '', '')
+call s:SetHighlight('htmlTagName', s:red, '', '')
 call s:SetHighlight('htmlEndTag', s:cyan, '', '')
 call s:SetHighlight('htmlTag', s:cyan, '', '')
 call s:SetHighlight('htmlSpecialTagName', s:yellow, '', '')
@@ -570,12 +612,12 @@ call s:SetHighlight('TSException', s:cyan, '', 'italic')
 call s:SetHighlight('TSField', s:white, '', '')
 call s:SetHighlight('TSFunction', s:blue, '', '')
 call s:SetHighlight('TSFuncBuiltin', s:blue, '', '')
-call s:SetHighlight('TSInclude', s:cyan, '', 'italic')
-call s:SetHighlight('TSKeyword', s:purple, '', '')
+call s:SetHighlight('TSInclude', s:blue, '', 'italic')
+call s:SetHighlight('TSKeyword', s:cyan, '', 'italic')
 call s:SetHighlight('TSKeywordOperator', s:cyan, '', 'italic')
-call s:SetHighlight('TSKeywordFunction', s:purple, '', '')
+call s:SetHighlight('TSKeywordFunction', s:cyan, '', 'italic')
 call s:SetHighlight('TSKeywordReturn', s:cyan, '', 'italic')
-call s:SetHighlight('TSMethod', s:blue, '', '')
+call s:SetHighlight('TSMethod', s:yellow, '', '')
 call s:SetHighlight('TSOperator', s:cyan, '', '')
 call s:SetHighlight('TSParameter', s:fg, '', '')
 call s:SetHighlight('TSProperty', s:fg, '', '')
