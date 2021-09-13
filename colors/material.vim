@@ -120,6 +120,7 @@ elseif g:material_theme_style == 'ocean' || g:material_theme_style == 'ocean-com
   let s:line_numbers = { 'gui': '#3b3f51', 'cterm': 60 }
   let s:line_highlight = { 'gui': '#0a0c12', 'cterm': 0 }
 elseif g:material_theme_style == 'moonlight'
+  let s:bg_darker = { 'gui': '#1e2030', 'cterm': 'none' }
   let s:bg = { 'gui': '#222436', 'cterm': 'none' }
   let s:fg = { 'gui': '#c8d3f5', 'cterm': 231 }
   let s:invisibles = { 'gui': '#65738e', 'cterm': 66 }
@@ -217,8 +218,8 @@ call s:SetHighlight('ModeMsg', s:green, '', '')
 call s:SetHighlight('MoreMsg', s:green, '', '')
 call s:SetHighlight('NonText', s:comments, '', '')
 call s:SetHighlight('Normal', s:fg, s:bg, '')
-call s:SetHighlight('Pmenu', s:fg, s:selection, '')
-call s:SetHighlight('PmenuSel', s:bg, s:cyan, '')
+call s:SetHighlight('Pmenu', s:fg, s:bg_darker, '')
+call s:SetHighlight('PmenuSel', s:fg, s:selection, '')
 call s:SetHighlight('PmenuSbar', '', s:selection, '')
 call s:SetHighlight('PmenuThumb', '', s:comments, '')
 call s:SetHighlight('Question', s:blue, '', '')
