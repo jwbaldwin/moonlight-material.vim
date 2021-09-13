@@ -25,6 +25,7 @@ endif
 
 function! s:SetHighlight(group, fg, bg, attr)
   let l:attr = a:attr
+  let l:fg = a:fg
 
   if !g:material_terminal_italics && l:attr == 'italic'
     let l:attr = ''
@@ -33,9 +34,13 @@ function! s:SetHighlight(group, fg, bg, attr)
   if empty(l:attr)
     let l:attr = 'none'
   endif
+  
+  if empty(l:fg)
+    let l:fg = {'gui': 'none', 'cterm': 'none'}
+  endif
 
-  if !empty(a:fg)
-    exec 'hi ' . a:group . ' guifg=' . a:fg.gui . ' ctermfg=' . a:fg.cterm
+  if !empty(l:fg)
+    exec 'hi ' . a:group . ' guifg=' . l:fg.gui . ' ctermfg=' . l:fg.cterm
   endif
 
   if !empty(a:bg)
@@ -125,6 +130,7 @@ elseif g:material_theme_style == 'moonlight'
   let s:fg = { 'gui': '#c8d3f5', 'cterm': 231 }
   let s:invisibles = { 'gui': '#65738e', 'cterm': 66 }
   let s:comments = { 'gui': '#7a88cf', 'cterm': 145 }
+  let s:search = { 'gui': '#444a73', 'cterm': 'none' }
   let s:caret = { 'gui': '#ffcc00', 'cterm': 220 }
   let s:selection = { 'gui': '#2f334d', 'cterm': 239 }
   let s:guides = { 'gui': '#37474f', 'cterm': 17 }
@@ -173,10 +179,12 @@ endif
 
 " Defined globally so that the Airline theme has access
 let g:material_colorscheme_map = {}
+let g:material_colorscheme_map.bg_darker = s:bg_darker
 let g:material_colorscheme_map.bg = s:bg
 let g:material_colorscheme_map.fg = s:fg
 let g:material_colorscheme_map.invisibles = s:invisibles
 let g:material_colorscheme_map.comments = s:comments
+let g:material_colorscheme_map.search = s:search
 let g:material_colorscheme_map.caret = s:caret
 let g:material_colorscheme_map.selection = s:selection
 let g:material_colorscheme_map.guides = s:guides
@@ -223,8 +231,8 @@ call s:SetHighlight('PmenuSel', s:fg, s:selection, '')
 call s:SetHighlight('PmenuSbar', '', s:selection, '')
 call s:SetHighlight('PmenuThumb', '', s:comments, '')
 call s:SetHighlight('Question', s:blue, '', '')
-call s:SetHighlight('IncSearch', s:white, s:comments, 'none')
-call s:SetHighlight('Search', s:white, s:comments, 'none')
+call s:SetHighlight('IncSearch', s:fg, s:search, 'none')
+call s:SetHighlight('Search', '', s:search, 'none')
 call s:SetHighlight('SignColumn', s:fg, s:bg, '')
 call s:SetHighlight('SpecialKey', s:comments, '', '')
 call s:SetHighlight('SpellCap', s:blue, '', 'undercurl')
