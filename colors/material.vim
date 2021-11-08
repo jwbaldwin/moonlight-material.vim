@@ -79,23 +79,6 @@ let s:brown = { 'gui': '#c17e70', 'cterm': 137 }
 let s:pink = { 'gui': '#f07178', 'cterm': 204 }
 let s:violet = { 'gui': '#bb80b3', 'cterm': 139 }
 
-" Extra unused colors
-"   '--moonlight-desaturated-gray': '#7f85a3',
-"   '--moonlight-dark-blue': '#3e68d7',
-"   '--moonlight-light-red': '#ff98a4',
-"   '--moonlight-teal': '#4fd6be',
-"   '--moonlight-indigo': '#7a88cf',
-"   '--moonlight-bright-cyan': '#b4f9f8',
-
-"   '--moonlight-gray-10-alt': '#bcc4d6',
-"   '--moonlight-gray-9': '#b4c2f0',
-"   '--moonlight-gray-8': '#a9b8e8',
-"   '--moonlight-gray-5': '#2f334d',
-"   '--moonlight-gray-4': '#222436',
-"   '--moonlight-gray-3': '#1e2030',
-"   '--moonlight-gray-2': '#191a2a',
-"   '--moonlight-gray-1': '#131421'
-
 " Theme-specific color overrides
 if g:material_theme_style == 'palenight' || g:material_theme_style == 'palenight-community'
   let s:bg = { 'gui': '#292d3e', 'cterm': 'none' }
@@ -295,6 +278,15 @@ hi link gitcommitSelected gitcommitComment
 hi link gitcommitDiscardedArrow gitcommitDiscardedFile
 hi link gitcommitSelectedArrow gitcommitSelectedFile
 hi link gitcommitUnmergedArrow gitcommitUnmergedFile
+
+" Elixir
+syn match elixirShortDoc '@\w*doc ".*"'
+syn region elixirFullDoc start='@\w*doc """' end='"""'
+hi link elixirShortDoc Comment
+hi link elixirFullDoc Comment
+
+call s:SetHighlight('elixirShortDoc', s:red, '', 'italic')
+call s:SetHighlight('elixirShortDoc', s:red, '', 'italic')
 
 " Javascript
 call s:SetHighlight('javaScriptBraces', s:fg, '', '')
@@ -621,7 +613,7 @@ call s:SetHighlight('TSException', s:cyan, '', 'italic')
 call s:SetHighlight('TSField', s:white, '', '')
 call s:SetHighlight('TSFunction', s:blue, '', '')
 call s:SetHighlight('TSFuncBuiltin', s:blue, '', '')
-call s:SetHighlight('TSInclude', s:blue, '', 'italic')
+call s:SetHighlight('TSInclude', s:cyan, '', 'italic')
 call s:SetHighlight('TSKeyword', s:cyan, '', 'italic')
 call s:SetHighlight('TSKeywordOperator', s:cyan, '', 'italic')
 call s:SetHighlight('TSKeywordFunction', s:cyan, '', 'italic')
@@ -636,6 +628,6 @@ call s:SetHighlight('TSRepeat', s:cyan, '', 'italic')
 call s:SetHighlight('TSTag', s:pink, '', '')
 call s:SetHighlight('TSTagDelimiter', s:cyan, '', '')
 call s:SetHighlight('TSTagAttribute', s:purple, '', '')
-call s:SetHighlight('TSType', s:yellow, '', '')
+call s:SetHighlight('TSType', s:blue, '', '')
 call s:SetHighlight('TSVariable', s:fg, '', '')
 call s:SetHighlight('TSVariableBuiltin', s:fg, '', '')
